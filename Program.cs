@@ -7,19 +7,28 @@ namespace week3
     {
         static void Main(string[] args)
         {
-            Car car1 = new Car("Ford", "Raptor");
-            Car car2 = new Car("Nissan", "Ultra");
+            List<Car> cars = new List<Car>();
 
-            Console.WriteLine($"Car = {car1.Make} {car1.Model}");
-            Console.WriteLine($"Car = {car2.Make} {car2.Model}");
-
-            Console.WriteLine($"The {car1.Make} {car1.Model} is travelling at speed {car1.Speed}");
-            car1.Accelerate();
-            car1.Accelerate();
-            car1.Accelerate();
-            car1.Accelerate();
-            car1.Accelerate();
-            Console.WriteLine($"The {car1.Make} {car1.Model} is travelling at speed {car1.Speed}");
+            cars.Add( new Car("Ford", "Raptor"));
+            cars.Add( new Car("Nissan", "Ultra"));
+            
+            foreach(Car car in cars)
+            {
+                Console.WriteLine($"Car = {car.Make} {car.Model}");
+            }
+            foreach(Car car in cars)
+            {
+                 for(int i = 0; i < 3; i++)
+                    {
+                        AccelerateAndGetSpeed(car);
+                    }
+            }
+        }
+        static void AccelerateAndGetSpeed(Car car)
+        {
+            car.Accelerate();
+            Console.WriteLine($"The {car.Make} {car.Model} is travelling at speed {car.Speed}");
         }
     }
+
 }
